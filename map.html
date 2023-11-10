@@ -19,15 +19,36 @@
 <label for="destination">Destination</label>
 <input type="text" id="destination" name="destination">
 
-<button id="Button">Where To!</button>
+<button id="myButton">Where To!</button>
+
+<div id="temperature"></div>
 
 <script>
-    const myButton = document.getElementById('Button');
+    const myButton = document.getElementById('myButton');
+    const destinationInput = document.getElementById('destination');
 
-    // function handleClick() {
-    //     var destination = destinationInput.value;
-    //     const newURL = 
-    // }
+    function handleClick() {
+        const city = destinationInput.value;
+        const apiKey = "73b0cba1ba046852f98801a447debff3";
+        const apiUrl = `https:api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+        fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('HTTP error! Status: ${response.status}');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            const temperature = data.main.temp;
+            document.getElementById('temperature').innerText = `Temperature: ${temperature} K`;
+          })
+          .catch(error => {
+            console.error('Fetch error:', error);
+          });
+    }
+
 
     myButton.addEventListener('click', handleClick);
 </script>

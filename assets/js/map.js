@@ -26,7 +26,10 @@ async function initMap() {
 initMap();
 
 
-//const apiKey = "73b0cba1ba046852f98801a447debff3" //open weather
+const apiKey = "73b0cba1ba046852f98801a447debff3"; //open weather
+const city = 'destination'
+
+const apiUrl = `https:api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
 // https://api.openweathermap.org/geo/1.0/direct?q=orlando&limit=1&appid=486a30fe2a4040f404391459060015ad
 
