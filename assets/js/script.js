@@ -1,5 +1,3 @@
-
-
 console.log("connected");
 var currencyArray;
 
