@@ -25,3 +25,14 @@ async function initMap() {
 }
 
 initMap();
+
+$("#city").on("change keyup", function() {
+    var city = $(this).val()
+    $.getJSON("https://maps.googleapis.com/maps/api/geocode/json?address="+encodeURIComponent(city), function(val) {
+      if(val.results.length) {
+        var location = val.results[0].geometry.location
+        $("#lat").val(location.lat)
+        $("#lon").val(location.lng)
+      }
+    })
+  })

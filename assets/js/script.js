@@ -14,4 +14,4 @@ fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${key}&currencies=`)
 //https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_0OUoo47t39YgiyRkWn6hAtnHSkBcNBPguWidPeWQ&currencies=e
 
 //google map API Key
-var key = "AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y"
+//var key = "AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y"
