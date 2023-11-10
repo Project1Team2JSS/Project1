@@ -15,3 +15,4 @@ fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${key}&currencies=`)
 
 //google map API Key
 //var key = "AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y"
+
