@@ -3,10 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1</title>
+    <title>Trip Tips</title>
+    <link rel="stylesheet" href="styles.css"
 </head>
 <body>
-    <h1>PROJECT 1</h1>
-    <h2>Team Jen Sean Stuart</h2>
+    <header>
+        <h1>Trip Tips</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Flights</a>
+        <a href="#">Destination</a>
+        <a href="#">Budget</a>
+        <a href="#">Manage Destinations</a>
+    </nav>
+
+
+    <section>
+        <h2>Welcome to Trip Tips</h2>
+        <p>Explore the newest way to travel to your dream destination with the best deals.</p>
+        <form id="searchForm">
+            <!-- //users type their search item here// -->
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" name="destination"
+            
+            <!-- //users select from list of LOC formats in dropdown// -->
+    
+            <label for="price range">Price Range:</label>
+            <select id="price range" name="price range">
+                <option value="" disabled selected>Select a Price Range</option>
+                <option value="$0-$500">$0-$500</option>
+                <option value="$500-$1,500">$500-$1,500</option>
+                <option value="$1,500-$2,500">$1,500-$2,500</option>
+                <option value="$$2,500-$3,500">$2,500-$3,500</option>
+                <option value="$3,500-$4,500">$3,500-$4,500</option>
+                <option value="$4,500-$+">$4,500- $+</option>
+            </select>
+    
+    </section>
+
+
+
+    <footer>
+        &copy; 2023 Trip Trips. All rights reserved to Boots & Pals
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" 
+        async defer></script>
+
 </body>
 </html>
