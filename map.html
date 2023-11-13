@@ -3,57 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Map API</title>
-    <link rel="stylesheet" href="assets/css/map.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>Interactive Geocoding</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
+    <input type="text" id="locationInput" placeholder="Enter a location">
+    <button onclick="getCoordinates()">Get Coordinates</button>
     <div id="map"></div>
 
-    <!-- prettier-ignore -->
-    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-        ({key: "AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y" });</script>
+    <script>
+        function initMap() {
+            // Initialize the map
+            const { AdvancedMarkerElement } = google.maps.importLibrary("marker");
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
 
-<label for="destination">Destination</label>
-<input type="text" id="destination" name="destination">
+            // Initialize the geocoder
+            const geocoder = new google.maps.Geocoder();
 
-<button id="myButton">Where To!</button>
+            // Store the marker globally
+            window.marker = new google.maps.Marker({ map: map });
+        }
 
-<div id="temperature"></div>
+        function getCoordinates() {
+            const location = document.getElementById('locationInput').value;
 
-<script>
-    const myButton = document.getElementById('myButton');
-    const destinationInput = document.getElementById('destination');
-
-    function handleClick() {
-        const city = destinationInput.value;
-        const apiKey = "73b0cba1ba046852f98801a447debff3";
-        const apiUrl = `https:api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-
-        fetch(apiUrl)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('HTTP error! Status: ${response.status}');
+            if (location.trim() === '') {
+                alert('Please enter a location.');
+                return;
             }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data);
-            const temperature = data.main.temp;
-            document.getElementById('temperature').innerText = `Temperature: ${temperature} K`;
-          })
-          .catch(error => {
-            console.error('Fetch error:', error);
-          });
-    }
 
+            const geocoder = new google.maps.Geocoder();
 
-    myButton.addEventListener('click', handleClick);
-</script>
-    
+            geocoder.geocode({ address: location }, (results, status) => {
+                if (status === 'OK') {
+                    const locationData = results[0].geometry.location;
+                    const map = new google.maps.Map(document.getElementById('map'), {
+                        center: locationData,
+                        zoom: 12
+                    });
 
-    <script src="assets/js/map.js"></script>
+                    // Set marker position
+                    window.marker.setPosition(locationData);
+                } else {
+                    alert('Geocoding was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y&callback=initMap" async defer></script>
 </body>
 </html>
