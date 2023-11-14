@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Tips</title>
     <link rel="stylesheet" href="styles.css"
-    
 
 </head>
 <body>
@@ -33,6 +32,26 @@
            <label for ="destination">Where To</label>
            <input type="text" id="destinationInput" name="Where To">
            <button id="openMapLink">Open Map</button>
+           <label for="location">Enter a location</label>
+           <input type="text" id="LocationInput" placeholder="Enter a location">
+           <button onclick="getCoordinates()">Get Coordinates</button>
+           <div id="map"></div>
+
+           <script>
+                document.getElementById('openMapLink').addEventListener('click', function() {
+                    var destinationValue = document.getElementById('destinationInput').value;
+                    if (destinationValue.trim() !== '') {
+                        window.open('map.html?destination=' + encodeURIComponent(destinationValue), '_blank');
+                    } else {
+                        alert('Please enter a destination before opening the map.');
+                    }
+                });
+
+                function getCoordinates() {
+                    var locationValue = document.getElementById('locationInput').value;
+                    console.log('Getting coordinates for:', locationValue);
+                }
+           </script>
 
             <!-- //users select from list of LOC formats in dropdown// -->
     
