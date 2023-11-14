@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Tips</title>
     <link rel="stylesheet" href="styles.css"
-
-    <script>
-        function openNewWindow() {
-            window.open('map.html', '_blank');
-        }
-    </script>
+    
 
 </head>
 <body>
@@ -33,9 +28,11 @@
         <form id="searchForm">
             <!-- //users type their search item here// -->
             <label for="destination">Destination</label>
-            <input type="text" id="destination" name="destination"
+            <input type="text" id="destination" name="destination">
 
-            
+           <label for ="map">Where To</label>
+           <input type=""
+
             <!-- //users select from list of LOC formats in dropdown// -->
     
             <label for="price range">Price Range:</label>
@@ -52,12 +49,15 @@
             //submit button
             <button type="submit">Git Tip</button>
         </section>
+
+        
     <footer>
         &copy; 2023 Trip Trips. All rights reserved to Boots & Pals
     </footer>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y&callback=initMap" async defer></script>
     <script src="assets/js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" 
+
         async defer></script>
 
 
