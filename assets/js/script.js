@@ -16,32 +16,31 @@ fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${key}&currencies=`)
 
 
 
+function getCountryCurrency(countryName) {
+    fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
+        .then(response => response.json())
+        .then(data => {
+            // Check if country was found
+            if (data[0]) {
+                // Get the currency code, name, and symbol
+                const currencyCode = data[0].currencies[0].code;
+                const currencyName = data[0].currencies[0].name;
+                const currencySymbol = data[0].currencies[0].symbol;
 
-// //function getCountryCurrency(countryName) {
-//     fetch(`https://restcountries.eu/rest/v2/name/${countryName}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             // Check if country was found
-//             if (data[0]) {
-//                 // Get the currency code, name, and symbol
-//                 const currencyCode = data[0].currencies[0].code;
-//                 const currencyName = data[0].currencies[0].name;
-//                 const currencySymbol = data[0].currencies[0].symbol;
+                console.log(`Country: ${countryName}`);
+                console.log(`Currency Code: ${currencyCode}`);
+                console.log(`Currency Name: ${currencyName}`);
+                console.log(`Currency Symbol: ${currencySymbol}`);
+            } else {
+                console.log(`No data found for ${countryName}`);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+}
 
-//                 console.log(`Country: ${countryName}`);
-//                 console.log(`Currency Code: ${currencyCode}`);
-//                 console.log(`Currency Name: ${currencyName}`);
-//                 console.log(`Currency Symbol: ${currencySymbol}`);
-//             } else {
-//                 console.log(`No data found for ${countryName}`);
-//             }
-//         })
-//         .catch(error => console.error('Error:', error));
-// }
-
-// // Call the function with a country name
-// getCountryCurrency('United States');
-
+// Call the function with a country name
+getCountryCurrency('United States');
+    
 
 //OUTPUT OF ABOVE LOOKS LIKE THIS://
 // //Country: United States
@@ -51,3 +50,11 @@ fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${key}&currencies=`)
 
 
 
+
+//event listener on input field or button where user inputs data , whatever country then call function when they hit submit on said form//
+//destination  maybe move your budget feature//
+
+//budget
+//destination
+//NEW PAGE//
+//new tabe
