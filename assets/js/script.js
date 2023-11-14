@@ -49,3 +49,5 @@ fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${key}&currencies=`)
 // Currency Name: United States dollar
 // Currency Symbol: $
 
+
+
