@@ -27,12 +27,15 @@
         <form id="searchForm">
             <!-- //users type their search item here// -->
             <label for="destination">Destination</label>
-            <input type="text" id="destination" name="destination"
+            <input type="text" id="destination" name="destination" placeholder="Country">
 
+
+            <label for="budget">Budget</label>
+            <input type="number" id="budget" name="amount" min="0" step=".01" placeholder="Amount US Dollars">
             
             <!-- //users select from list of LOC formats in dropdown// -->
     
-            <label for="price range">Price Range:</label>
+            <!-- <label for="price range">Price Range:</label>
             <select id="price range" name="price range">
                 <option value="" disabled selected>Select a Price Range</option>
                 <option value="$0-$500">$0-$500</option>
@@ -40,19 +43,18 @@
                 <option value="$1,500-$2,500">$1,500-$2,500</option>
                 <option value="$$2,500-$3,500">$2,500-$3,500</option>
                 <option value="$3,500-$4,500">$3,500-$4,500</option>
-                <option value="$4,500-$+">$4,500- $+</option>
+                <option value="$4,500-$+">$4,500- $+</option> -->
 
             </select>
             //submit button
-            <button type="submit">Git Tip</button>
+            <button type="button" id="tip">Git Tip</button>
         </section>
     <footer>
         &copy; 2023 Trip Trips. All rights reserved to Boots & Pals
     </footer>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"   
 
     <script src="assets/js/script.js"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" 
         async defer></script>
 
 
