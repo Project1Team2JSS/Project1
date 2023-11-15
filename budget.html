@@ -27,7 +27,7 @@
         <form id="searchForm">
             <!-- //users type their search item here// -->
             <label for="destination">Destination</label>
-            <input type="text" id="destination" name="destination" placeholder="Country">
+            <input type="text" id="locationInput" name="destination" placeholder="Country">
 
 
             <label for="budget">Budget</label>
@@ -46,7 +46,7 @@
                 <option value="$4,500-$+">$4,500- $+</option> -->
 
             </select>
-            //submit button
+            <button onclick="getCoordinates()">Submit</button>
             <button type="button" id="tip">Git Tip</button>
 
         
@@ -56,6 +56,7 @@
     </footer>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y&callback=initMap" async defer></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/map.js"></script>
 
 
 </body>
