@@ -18,6 +18,7 @@
         <a href="#">Destination</a>
         <a href="#">Budget</a>
         <a hre  f="#">Manage Destinations</a>
+        
     </nav>
 
 
@@ -27,7 +28,7 @@
         <form id="searchForm">
             <!-- //users type their search item here// -->
             <label for="destination">Destination</label>
-            <input type="text" id="destination" name="destination" placeholder="Country">
+            <input type="text" id="locationInput" name="destination" placeholder="Country">
 
 
             <label for="budget">Budget</label>
@@ -46,14 +47,24 @@
                 <option value="$4,500-$+">$4,500- $+</option> -->
 
             </select>
-            //submit button
+            <button onclick="getCoordinates()">Submit</button>
             <button type="button" id="tip">Git Tip</button>
+
+            <button type="button" onclick="openMap()">Submit</button>
+            <script>
+                function openMap() {
+                    window.open('map.html', '_blank', 'width=600,height=400');
+                }
+            </script>
+            
+        
         </section>
     <footer>
         &copy; 2023 Trip Trips. All rights reserved to Boots & Pals
     </footer>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y&callback=initMap" async defer></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/map.js"></script>
 
 
 </body>
