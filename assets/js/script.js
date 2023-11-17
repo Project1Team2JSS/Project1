@@ -31,6 +31,9 @@ const getCountryCurrency = async (countryName, amount) => {
   ); 
   const jsoncurrencyConvertapi = await currencyConvertapi.json();
   console.log(jsoncurrencyConvertapi);
+  if (data.json.error = "This currency pair is for premium subscribers only.") {
+    alert("Please enter another country. Wouldn't you like you go to Canada or Europe.");
+  }
   displayConversionResult(jsoncurrencyConvertapi.new_amount)
   // displayConversionResult(jsoncurrencyConvertApi.currencyCode)
   console.log(jsoncurrencyConvertapi.new_amount)
