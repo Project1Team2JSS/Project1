@@ -32,6 +32,7 @@ const getCountryCurrency = async (countryName, amount) => {
   const jsoncurrencyConvertapi = await currencyConvertapi.json();
   console.log(jsoncurrencyConvertapi);
   displayConversionResult(jsoncurrencyConvertapi.new_amount)
+  // displayConversionResult(jsoncurrencyConvertApi.currencyCode)
   console.log(jsoncurrencyConvertapi.new_amount)
 };
 
@@ -46,7 +47,6 @@ budgetButton.addEventListener("click", function (event) {
   var amount = document.getElementById("budget").value;
   getCountryCurrency(countryName, amount)
 });
-
 
 
 
