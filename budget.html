@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Tips</title>
-    <link rel="stylesheet" href="styles.css"
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
@@ -49,16 +49,15 @@
             </select>
             <button onclick="getCoordinates()">Submit</button>
             <button type="button" id="tip">Git Tip</button>
-
-            <input type="text" id="locationInput" placeholder="Enter a location">
-    <button onclick="getCoordinates()">Get Coordinates</button>
-    <div id="map"></div>
-    <style>
-        #map {
-            height: 400px;
-            width: 100%;
-        }
-    </style>
+            <div id="map"></div>
+            <style>
+                #map {
+                    height: 400px;
+                    width: 100%;
+                }
+            </style>
+            <!-- <input type="text" id="locationInput" placeholder="Enter a location">
+    <button type="button" onclick="getCoordinates()">Get Coordinates</button> -->
 
 
         <div id="conversionResult" style="margin-top: 20px; font-size: 1.2em;">Displaytext
@@ -67,10 +66,11 @@
 
         
     <script>
+        var map;
         function initMap() {
             // Initialize the map
             const { AdvancedMarkerElement } = google.maps.importLibrary("marker");
-            const map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('map'), {
                 center: { lat: -34.397, lng: 150.644 },
                 zoom: 8
             });
@@ -100,6 +100,11 @@
                     //     // center: locationData,
                     //     // zoom: 12
                     // // });
+                    map.setCenter(locationData);
+                    // const map = new google.maps.Map(document.getElementById('map'), {
+                    //     center: locationData,
+                    //     zoom: 12
+                    // });
 
                     // Set marker position
                     window.marker.setPosition(locationData);

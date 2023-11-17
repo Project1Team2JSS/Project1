@@ -54,6 +54,7 @@ budgetButton.addEventListener("click", function (event) {
   var countryName = document.getElementById("locationInput").value;
   var amount = document.getElementById("budget").value;
   getCountryCurrency(countryName, amount)
+  getCoordinates();
 });
 
 
