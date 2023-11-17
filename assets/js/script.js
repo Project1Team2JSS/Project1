@@ -5,7 +5,7 @@ var countryApi = "C4ZcT3i97dTmhMQh9pLU6Q==5lj4TfH531vJD2Tv";
 
 const getCountryCurrency = async (countryName, amount) => {
   console.log(amount);
-  const data = await fetch(
+  const countryResponse = await fetch(
     `https://api.api-ninjas.com/v1/country?name=${countryName}`,
     {
       method: "GET",
@@ -15,11 +15,13 @@ const getCountryCurrency = async (countryName, amount) => {
       },
     }
   );
-  const jsonData = await data.json();
-  const currencyCode = jsonData[0].currency.code;
+  const countryData = await countryResponse.json();
+  const currencyCode = countryData[0].currency.code;
+ 
+  const currencyName = countryData[0].currency.name;
   console.log(currencyCode);
 
-  const currencyConvertapi = await fetch(
+  const currResponse = await fetch(
     `https://api.api-ninjas.com/v1/convertcurrency?have=USD&want=${currencyCode}&amount=${amount}`,
     {
       method: "GET",
@@ -29,14 +31,17 @@ const getCountryCurrency = async (countryName, amount) => {
       },
     }
   ); 
-  const jsoncurrencyConvertapi = await currencyConvertapi.json();
-  console.log(jsoncurrencyConvertapi);
-  if (data.json.error = "This currency pair is for premium subscribers only.") {
-    alert("Please enter another country. Wouldn't you like you go to Canada or Europe.");
+
+
+  const currData = await currResponse.json();
+  console.log(currData);
+  if (currData.error == "This currency pair is for premium subscribers only.") {
+    document.getElementById("conversionResult").textContent = 'currency not available. sowwy.'
+  } else {
+    displayConversionResult(currData.new_amount, currencyName)
   }
-  displayConversionResult(jsoncurrencyConvertapi.new_amount)
   // displayConversionResult(jsoncurrencyConvertApi.currencyCode)
-  console.log(jsoncurrencyConvertapi.new_amount)
+  console.log(currData.new_amount)
 };
 
 
@@ -53,9 +58,9 @@ budgetButton.addEventListener("click", function (event) {
 
 
 
-const displayConversionResult = (convertedAmount) => {
+const displayConversionResult = (convertedAmount, currencyName) => {
   const resultElement = document.getElementById('conversionResult');
-  resultElement.textContent = `Converted amount: ${convertedAmount}`;
+  resultElement.textContent = `Converted amount: ${currencyName} ${convertedAmount}`;
 }; 
 
 var budgetButton = document.getElementById("tip");
