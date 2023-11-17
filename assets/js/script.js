@@ -38,7 +38,7 @@ const getCountryCurrency = async (countryName, amount) => {
   if (currData.error == "This currency pair is for premium subscribers only.") {
     document.getElementById("conversionResult").textContent = 'currency not available. sowwy.'
   } else {
-    displayConversionResult(currData.new_amount, currencyName)
+    displayConversionResult(currData.new_amount, currencyName, currencyCode)
   }
   // displayConversionResult(jsoncurrencyConvertApi.currencyCode)
   console.log(currData.new_amount)
@@ -59,9 +59,12 @@ budgetButton.addEventListener("click", function (event) {
 
 
 
-const displayConversionResult = (convertedAmount, currencyName) => {
+const displayConversionResult = (convertedAmount, currencyName, currencyCode) => {
   const resultElement = document.getElementById('conversionResult');
-  resultElement.textContent = `Converted amount: ${currencyName} ${convertedAmount}`;
+  formatedAmount = convertedAmount.toLocaleString("en-Us", {style:"currency", currency:currencyCode});
+  console.log(formatedAmount);
+  resultElement.textContent = `Converted amount: ${currencyName} ${formatedAmount}`;
+  
 }; 
 
 var budgetButton = document.getElementById("tip");
