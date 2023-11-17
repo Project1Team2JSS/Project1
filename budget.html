@@ -95,10 +95,11 @@
             geocoder.geocode({ address: location }, (results, status) => {
                 if (status === 'OK') {
                     const locationData = results[0].geometry.location;
-                    const map = new google.maps.Map(document.getElementById('map'), {
-                        center: locationData,
-                        zoom: 12
-                    });
+                    map.setCenter(locationData);
+                    // const map = new google.maps.Map(document.getElementById('map'), {
+                    //     // center: locationData,
+                    //     // zoom: 12
+                    // // });
 
                     // Set marker position
                     window.marker.setPosition(locationData);
