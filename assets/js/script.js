@@ -31,23 +31,49 @@ const getCountryCurrency = async (countryName, amount) => {
   ); 
   const jsoncurrencyConvertapi = await currencyConvertapi.json();
   console.log(jsoncurrencyConvertapi);
-  // console.log(jsoncurrencyConvertapi.new_amount)
+  displayConversionResult(jsoncurrencyConvertapi.new_amount)
+  console.log(jsoncurrencyConvertapi.new_amount)
 };
+
+
+
 
 var budgetButton = document.getElementById("tip");
 // adding click listenter
 budgetButton.addEventListener("click", function (event) {
   event.preventDefault();
-  var countryName = document.getElementById("destination").value;
+  var countryName = document.getElementById("locationInput").value;
   var amount = document.getElementById("budget").value;
-  getCountryCurrency(countryName, amount);
+  getCountryCurrency(countryName, amount)
 });
 
 
 
-const displayeConversionResult = (convertedAmount) => {
-  const resultElement = document
-}
+
+const displayConversionResult = (convertedAmount) => {
+  const resultElement = document.getElementById('conversionResult');
+  resultElement.textContent = `Converted amount: ${convertedAmount}`;
+}; 
+
+var budgetButton = document.getElementById("tip");
+  budgetButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    var countryName = document.getElementById("destination").value;
+    var amount = document.getElementById("budget").value;
+    getCountryCurrency(countryName, amount);
+  });
+
+
+
+
+//1 BUTTON ONLY
+//GET MAP TO DISPLAY ON THIS PAGE
+//
+  //it can't p
+ 
+
+// localStorage.setItem (key of that item)
+// var = localStorage.getitem(key of that item)
 
 
 // //city api goes 
@@ -70,3 +96,9 @@ const displayeConversionResult = (convertedAmount) => {
 
 // localStorage.setItem (key of that item)
 // var = localStorage.getitem(key of that item)
+
+// //QUERY STRING WITH DA QUESTION MARKS
+// //LCOATION.SEARCH - PARSE THAT NOISE
+// //EMBED INTO THE URL
+// OPTION 2
+// LOCAL STORAGE LIKE ABOVE
