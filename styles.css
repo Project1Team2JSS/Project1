@@ -1,18 +1,20 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 228, 245);
+    background-color: #D6E0E2;
+    font-size: 25px;
 }
 
 header {
-    background-color: rgb(255, 158, 106);
+    background-color: #3B454F;
     color: white;
     padding: 20px 0;
     text-align: center;
+    font-size: 36px;
 }
 
 nav {
-    background-color:#fb5396;
+    background-color:#7B9080;
     color: white;
     text-align: end;
 }
@@ -27,7 +29,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: rgb(255, 0, 81);
+    background-color: #10302A;
 }
 
 section {
@@ -36,11 +38,12 @@ section {
 }
 
 h2{
-    color: #fb5396;
+    color: #7B9080;
+    font-size: 37px;
 }
 
 #searchForm {
-    background-color: #fb5396;
+    background-color: #7B9080;
     color: white;
     padding: 15px;
     margin: 8px;
@@ -48,7 +51,7 @@ h2{
 }
 
 footer {
-    background-color: rgb(255, 158, 106);
+    background-color: #3B454F;
     color: white;
     text-align: center;
     padding: 20px;
