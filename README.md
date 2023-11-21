@@ -24,3 +24,17 @@ Showing date and weather
 
 ![Currency](screencapture-127-0-0-1-5502-budget-html-2023-11-20-17_53_31.png)
 After clicking "Git Tip", map will move to desired destination and show currency change, date, and weather.
+
+## Link to Deployed Attributes
+
+
+## About the Team
+Pals n' Boots
+* Jenni: hjipark22@gmail.com / hjenp22
+* Sean: seanharrigan8@gmail.com /seanharrigan8
+* Stuart: stuartgosborn22@gmail.com / stuartgosborn
+
+
+  ![pals n boots logo](image.png)
+
+© 2023 Trip Trips. All rights reserved to Boots & Pals
