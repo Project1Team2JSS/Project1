@@ -94,4 +94,4 @@ let displayCurrentWeather = function (data, city) {
 
 
 
-userFormEl.addEventListener("click", formSubmitHandler);
+searchButton.addEventListener("click", formSubmitHandler);
