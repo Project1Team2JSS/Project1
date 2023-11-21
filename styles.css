@@ -1,33 +1,16 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 228, 245);
+    background-color: #D6E0E2;
+    font-size: 25px;
 }
 
 header {
-    background-color: rgb(255, 158, 106);
+    background-color: #3B454F;
     color: white;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
-}
-
-nav {
-    background-color:#fb5396;
-    color: white;
-    text-align: end;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 8px;
-    margin: 0 10px;
-    border-radius: 5px;
-    background-color: xx;
-}
-
-nav a:hover {
-    background-color: rgb(255, 0, 81);
+    font-size: 36px;
 }
 
 section {
@@ -36,22 +19,40 @@ section {
 }
 
 h2{
-    color: #fb5396;
+    color: #7B9080;
+    font-size: 37px;
 }
 
 #searchForm {
-    background-color: #fb5396;
+    background-color: #7B9080;
     color: white;
     padding: 15px;
     margin: 8px;
     text-align: center;
+    box-sizing: border-box;
+    border: 20px solid #3B454F;
 }
 
 footer {
-    background-color: rgb(255, 158, 106);
+    background-color: #3B454F;
     color: white;
     text-align: center;
     padding: 20px;
    bottom: 0;
    width: 100%;
+   font-size: 25px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border: 10px solid #3B454F;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
