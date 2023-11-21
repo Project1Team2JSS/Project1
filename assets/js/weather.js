@@ -23,7 +23,7 @@ var formSubmitHandler = function (event) {
 
 var getWeather = function (city) {
   let apiKey = "825dda9ae5ba6a08a48bbade32e85c41";
-  let weatherApi = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`;
+  let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}`;
   console.log(city);
 
   fetch(weatherApi)
