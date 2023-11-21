@@ -26,7 +26,7 @@ Showing date and weather
 After clicking "Git Tip", map will move to desired destination and show currency change, date, and weather.
 
 ## Link to Deployed Attributes
-
+https://project1team2jss.github.io/Trip-Tips-With-Pals/
 
 ## About the Team
 Pals n' Boots

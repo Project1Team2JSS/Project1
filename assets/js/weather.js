@@ -17,7 +17,7 @@ var formSubmitHandler = function (event) {
     currentContainer.textContent = "";
     searchInput.value = "";
   } else {
-    alert("Please enter a city/location.");
+    console.log("Please enter a city/location.");
   }
 };
 
@@ -94,4 +94,4 @@ let displayCurrentWeather = function (data, city) {
 
 
 
-userFormEl.addEventListener("click", formSubmitHandler);
+searchButton.addEventListener("click", formSubmitHandler);
