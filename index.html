@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Tips</title>
-    <link rel="stylesheet" href="styles.css"
+    <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
@@ -12,74 +12,109 @@
         <h1>Trip Tips</h1>
     </header>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Flights</a>
-        <a href="#">Destination</a>
-        <a href="#">Budget</a>
-        <a hre  f="#">Manage Destinations</a>
-    </nav>
-
-
     <section>
         <h2>Welcome to Trip Tips</h2>
         <p>Explore the newest way to travel to your dream destination with the best deals.</p>
         <form id="searchForm">
             <!-- //users type their search item here// -->
             <label for="destination">Destination</label>
-            <input type="text" id="destination" name="destination">
+            <input type="text" id="locationInput" name="destination" placeholder="City, Country">
 
-           <label for ="destination">Where To</label>
-           <input type="text" id="destinationInput" name="Where To">
-           <button id="openMapLink">Open Map</button>
-           <label for="location">Enter a location</label>
-           <input type="text" id="LocationInput" placeholder="Enter a location">
-           <button onclick="getCoordinates()">Get Coordinates</button>
-           <div id="map"></div>
 
-           <script>
-                document.getElementById('openMapLink').addEventListener('click', function() {
-                    var destinationValue = document.getElementById('destinationInput').value;
-                    if (destinationValue.trim() !== '') {
-                        window.open('map.html?destination=' + encodeURIComponent(destinationValue), '_blank');
-                    } else {
-                        alert('Please enter a destination before opening the map.');
-                    }
-                });
-
-                function getCoordinates() {
-                    var locationValue = document.getElementById('locationInput').value;
-                    console.log('Getting coordinates for:', locationValue);
-                }
-           </script>
-
+            <label for="budget">Budget</label>
+            <input type="number" id="budget" name="amount" min="0" step=".01" placeholder="Amount US Dollars">
+            
             <!-- //users select from list of LOC formats in dropdown// -->
     
-            <label for="price range">Price Range:</label>
+            <!-- <label for="price range">Price Range:</label>
             <select id="price range" name="price range">
                 <option value="" disabled selected>Select a Price Range</option>
                 <option value="$0-$500">$0-$500</option>
                 <option value="$500-$1,500">$500-$1,500</option>
                 <option value="$1,500-$2,500">$1,500-$2,500</option>
-                <option value="$$2,500-$3,500">$2,500-$3,500</option>
+                <option value="$2,500-$3,500">$2,500-$3,500</option>
                 <option value="$3,500-$4,500">$3,500-$4,500</option>
-                <option value="$4,500-$+">$4,500- $+</option>
+                <option value="$4,500-$+">$4,500- $+</option> -->
 
             </select>
-            //submit button
-            <button type="submit">Git Tip</button>
-        </section>
+            <button type="button" id="tip">Git Tip</button>
+            <div id="map"></div>
+            <style>
+                #map {
+                    height: 550px;
+                    width: 100%;
+                }
+            </style>
+            <!-- <input type="text" id="locationInput" placeholder="Enter a location">
+    <button type="button" onclick="getCoordinates()">Get Coordinates</button> -->
+
+
+        <div id="conversionResult" style="margin-top: 20px; font-size: 1.2em;">
+        </div>
+        <div id="weather-container">
+
+        </div>
 
         
+    <script>
+        var map;
+        function initMap() {
+            // Initialize the map
+            const { AdvancedMarkerElement } = google.maps.importLibrary("marker");
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+
+            // Initialize the geocoder
+            const geocoder = new google.maps.Geocoder();
+
+            // Store the marker globally
+            window.marker = new google.maps.Marker({ map: map });
+        }
+
+        function getCoordinates() {
+            const location = document.getElementById('locationInput').value;
+
+            if (location.trim() === '') {
+                alert('Please enter a location.');
+                return;
+            }
+
+            const geocoder = new google.maps.Geocoder();
+
+            geocoder.geocode({ address: location }, (results, status) => {
+                if (status === 'OK') {
+                    const locationData = results[0].geometry.location;
+                    map.setCenter(locationData);
+                    // const map = new google.maps.Map(document.getElementById('map'), {
+                    //     // center: locationData,
+                    //     // zoom: 12
+                    // // });
+                    map.setCenter(locationData);
+                    // const map = new google.maps.Map(document.getElementById('map'), {
+                    //     center: locationData,
+                    //     zoom: 12
+                    // });
+
+                    // Set marker position
+                    window.marker.setPosition(locationData);
+                } else {
+                    alert('Geocoding was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+        </section>
+        
     <footer>
-        &copy; 2023 Trip Trips. All rights reserved to Boots & Pals
+        &copy; 2023 Trip Trips. All rights reserved to Pals & Boots
     </footer>
-   
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y&callback=initMap" async defer></script>
     <script src="assets/js/script.js"></script>
-
-  
+    <script src="assets/js/weather.js"></script>
+    <!-- <script src="assets/js/map.js"></script> -->
 
 
 </body>
