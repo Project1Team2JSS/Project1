@@ -35,8 +35,8 @@ const getCountryCurrency = async (countryName, amount) => {
   const currData = await currResponse.json();
   console.log(currData);
   if (currData.error == "This currency pair is for premium subscribers only.") {
-    // document.getElementById("conversionResult").textContent =
-    //   "currency not available. sowwy.";
+    document.getElementById("conversionResult").textContent =
+      "😭";
     // Create modal object
     // Title, text, button labels
     const confirmModal = new validationModal({
@@ -45,21 +45,17 @@ const getCountryCurrency = async (countryName, amount) => {
       confirmText: "Okay...",
       cancelText: "Darn It!",
     });
-    
+
     console.log(confirmModal);
-    
+
     // document.getElementById("openModal").addEventListener("click", () => {
-      console.log("Currency Validation Error");
-      // open modal
-      confirmModal.open()
-        .then(value =>
-          console.log('User clicked confirm:', value)
-        )
-        .catch(value => 
-        console.log('User clicked cancel:', value)
-        );
+    console.log("Currency Validation Error");
+    // open modal
+    confirmModal
+      .open()
+      .then((value) => console.log("User clicked confirm:", value))
+      .catch((value) => console.log("User clicked cancel:", value));
     // });
-    
   } else {
     displayConversionResult(currData.new_amount, currencyName, currencyCode);
   }
@@ -98,8 +94,6 @@ budgetButton.addEventListener("click", function (event) {
   var amount = document.getElementById("budget").value;
   getCountryCurrency(countryName, amount);
 });
-
-
 
 //1 BUTTON ONLY
 //GET MAP TO DISPLAY ON THIS PAGE
