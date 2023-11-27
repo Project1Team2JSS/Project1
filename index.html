@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trip Tips</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./assets/css/modal.css">
 
 </head>
 <body>
     <header>
+        <!-- <img src="Downloads/triptips.png" alt="trip-tips logo"> -->
         <h1>Trip Tips</h1>
+        <img src="./assets/triptips.png" alt="Trip Tips Logo" class="logo-image">
+        
     </header>
 
     <header id="welcomeMessage">
     </header>
     <section>
+        <!-- <button id="openModal">Open Modal</button> -->
+
         <h2>Welcome to Trip Tips</h2>
         <p>Explore the newest way to travel to your dream destination with the best deals.</p>
         <form id="searchForm">
@@ -25,8 +31,8 @@
 
             <label for="budget">Budget</label>
             <input type="number" id="budget" name="amount" min="0" step=".01" placeholder="Amount US Dollars">
-            
         
+
             </select>
             <button type="button" id="tip">Git Tip</button>
             <div id="map"></div>
@@ -100,7 +106,7 @@
     <footer>
         &copy; 2023 Trip Trips. All rights reserved to Pals & Boots
     </footer>
-
+    <script src="assets/js/modal.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMwLlSd35T9tTlXnZFDX3wVZK3u28Ty_Y&callback=initMap" async defer></script>
     <script src="assets/js/history.js"></script>
      <script src="assets/js/script.js"></script>
