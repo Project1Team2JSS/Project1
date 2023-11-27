@@ -43,7 +43,7 @@ const getCountryCurrency = async (countryName, amount) => {
       titleText: "Currency Not Supported",
       messageText: "Sorry, please choose a new destination.",
       confirmText: "Okay...",
-      // cancelText: "Darn It!",
+      cancelText: "Darn It!",
     });
     
     console.log(confirmModal);
