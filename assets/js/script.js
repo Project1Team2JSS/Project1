@@ -21,6 +21,10 @@ const getCountryCurrency = async (countryName, amount) => {
   const currencyName = countryData[0].currency.name;
   console.log(currencyCode);
 
+
+
+
+
   const currResponse = await fetch(
     `https://api.api-ninjas.com/v1/convertcurrency?have=USD&want=${currencyCode}&amount=${amount}`,
     {
@@ -36,9 +40,9 @@ const getCountryCurrency = async (countryName, amount) => {
   const currData = await currResponse.json();
   console.log(currData);
   if (currData.error == "This currency pair is for premium subscribers only.") {
-    document.getElementById("conversionResult").textContent = 'currency not available. sowwy.'
+    document.getElementById("conversionResult").textContent = 'This currency is not available at this time. Please try again!'
   } else {
-    displayConversionResult(currData.new_amount, currencyName, currencyCode)
+    displayConversionResult(currData.new_amount, currencyName, currencyCode) 
   }
   // displayConversionResult(jsoncurrencyConvertApi.currencyCode)
   console.log(currData.new_amount)
@@ -51,11 +55,14 @@ var budgetButton = document.getElementById("tip");
 // adding click listenter
 budgetButton.addEventListener("click", function (event) {
   event.preventDefault();
-  var countryName = document.getElementById("locationInput").value;
+var countryName = document.getElementById("locationInput").value;
   var amount = document.getElementById("budget").value;
+
   getCountryCurrency(countryName, amount)
   getCoordinates();
+
 });
+
 
 
 
@@ -67,13 +74,13 @@ const displayConversionResult = (convertedAmount, currencyName, currencyCode) =>
   
 }; 
 
-var budgetButton = document.getElementById("tip");
-  budgetButton.addEventListener("click", function (event) {
-    event.preventDefault();
-    var countryName = document.getElementById("destination").value;
-    var amount = document.getElementById("budget").value;
-    getCountryCurrency(countryName, amount);
-  });
+// var budgetButton = document.getElementById("tip");
+//   budgetButton.addEventListener("click", function (event) {
+//     event.preventDefault();
+//     var countryName = document.getElementById("destination").value;
+//     var amount = document.getElementById("budget").value;
+//     getCountryCurrency(countryName, amount);
+//   });
 
 
 
@@ -113,4 +120,4 @@ var budgetButton = document.getElementById("tip");
 // //LCOATION.SEARCH - PARSE THAT NOISE
 // //EMBED INTO THE URL
 // OPTION 2
-// LOCAL STORAGE LIKE ABOVE
+// LOCAL STORAGE LIKE ABOVEf
