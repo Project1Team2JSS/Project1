@@ -13,6 +13,11 @@ header {
     font-size: 36px;
 }
 
+.logo-image {
+    width: 100px;
+    height: 100px;
+}
+
 section {
     padding: 40px;
     text-align: center;
