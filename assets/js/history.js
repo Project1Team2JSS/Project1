@@ -6,18 +6,18 @@ var submitButton = document.getElementById("tip");
 var historyContainer = document.getElementById("search-history");
 
 function displayWelcomeMessage() {
-const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    if (userInfo && userInfo.length > 0) {
-      const welcomeMessage = document.getElementById("welcomeMessage");
-      welcomeMessage.textContent =
-      `Welcome back!`
-    }
-};
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  if (userInfo && userInfo.length > 0) {
+    const welcomeMessage = document.getElementById("welcomeMessage");
+    // welcomeMessage.textContent = `Welcome back!`;
+    displaySearchHistory(userInfo);
+  }
+}
 
 window.addEventListener("load", displayWelcomeMessage);
 
 formSubmitHandler = function (event) {
-   event.preventDefault();
+  event.preventDefault();
 
   console.log("save info");
   var countryName = countryNameEl.value.trim();
@@ -27,40 +27,36 @@ formSubmitHandler = function (event) {
 
   console.log("Raw Country Name Input:", countryName);
   console.log("Raw Amount Input:", budgetAmount);
+  userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  console.log("OLD USER INfO", [...userInfo])
+  userInfo.push(countryName);
+  userInfo.push(budgetAmount);
+  console.log("NEW USER INFO", [...userInfo]);
+  displaySearchHistory(userInfo);
 
-  var userInfo = [countryName, budgetAmount];
-displaySearchHistory();
-  function displaySearchHistory() {
+};
+// updated local storage
+function displaySearchHistory(userInfo) {
+    historyContainer.innerHTML = "";
     console.log(userInfo);
 
     // Creates Search History Header
     var historyDisplayEl = document.createElement("h3");
+    console.log("Header Added");
     historyDisplayEl.textContent = "Search History";
-// Append Header to Container on DOM
+    // Append Header to Container on DOM
     historyContainer.appendChild(historyDisplayEl);
-console.log("Header Added");
-var historyListEl = document.createElement("ul");
+    var historyListContainer = document.createElement("ul");
 
-console.log("Add UL to Container")
-var historyListItem = document.createElement("li");
-historyListItem.textContent = userInfo[0];
+    for (i = 0; i < userInfo.length; i += 2) {
+      console.log(userInfo[i]);
+      var historyListItem = document.createElement("li");
+      historyListItem.textContent = userInfo[i] + " - " + userInfo[i + 1];
+      historyListContainer.appendChild(historyListItem);
+    }
 
-historyContainer.appendChild(historyDisplayEl);
-    //     historyListItem.textContent = userInfo[0];
-    //     historyListEl.appendChild(historyListItem);
-
-
-    // for(i = 0; i < 3; i++){
-    //     var historyListItem = document.createElement("li");
-    //     historyListItem.textContent = userInfo[0];
-    //     historyListEl.appendChild(historyListItem);
-    // }
-    
-  };
-
-
-  localStorage.setItem("userInfo", JSON.stringify(userInfo));
-};
-// updated local storage
-
+    historyContainer.appendChild(historyListContainer);
+    console.log("SAVING TO LOCAL STORAGE", userInfo);
+    localStorage.setItem("userInfo", JSON.stringify(userInfo));
+  }
 submitButton.addEventListener("click", formSubmitHandler);

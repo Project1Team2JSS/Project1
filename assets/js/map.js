@@ -34,7 +34,7 @@ function getCoordinates() {
             // Set marker position
             window.marker.setPosition(locationData);
         } else {
-            alert('Geocoding was not successful for the following reason: ' + status);
+            // alert('Geocoding was not successful for the following reason: ' + status);
         }
     });
 }
