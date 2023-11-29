@@ -88,12 +88,12 @@ const displayConversionResult = (
   currencyCode
 ) => {
   const resultElement = document.getElementById("conversionResult");
-  formatedAmount = convertedAmount.toLocaleString("en-Us", {
+  const formattedAmount = convertedAmount.toLocaleString("en-Us", {
     style: "currency",
     currency: currencyCode,
-  });
-  console.log(formatedAmount);
-  resultElement.textContent = `Converted amount: ${currencyName} ${formatedAmount}`;
+});
+  console.log(formattedAmount);
+  resultElement.textContent = `Converted amount: ${currencyName} ${formattedAmount}`;
 };
 
 var budgetButton = document.getElementById("tip");
