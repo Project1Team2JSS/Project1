@@ -17,8 +17,8 @@ function getCoordinates() {
     const location = document.getElementById('locationInput').value;
 
     if (location.trim() === '') {
-        alert('Please enter a location.');
-        return;
+        // alert('Please enter a location.');
+        // return;
     }
 
     const geocoder = new google.maps.Geocoder();

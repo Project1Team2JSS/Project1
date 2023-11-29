@@ -21,6 +21,10 @@ const getCountryCurrency = async (countryName, amount) => {
   const currencyName = countryData[0].currency.name;
   console.log(currencyCode);
 
+
+
+
+
   const currResponse = await fetch(
     `https://api.api-ninjas.com/v1/convertcurrency?have=USD&want=${currencyCode}&amount=${amount}`,
     {
@@ -35,8 +39,10 @@ const getCountryCurrency = async (countryName, amount) => {
   const currData = await currResponse.json();
   console.log(currData);
   if (currData.error == "This currency pair is for premium subscribers only.") {
-    // document.getElementById("conversionResult").textContent =
-    //   "currency not available. sowwy.";
+
+    document.getElementById("conversionResult").textContent =
+      "😭";
+// >>>>>>> 7c6fa784a9778250979ad976d498ace431fdcc1d
     // Create modal object
     // Title, text, button labels
     const confirmModal = new validationModal({
@@ -45,21 +51,17 @@ const getCountryCurrency = async (countryName, amount) => {
       confirmText: "Okay...",
       cancelText: "Darn It!",
     });
-    
+
     console.log(confirmModal);
-    
+
     // document.getElementById("openModal").addEventListener("click", () => {
-      console.log("Currency Validation Error");
-      // open modal
-      confirmModal.open()
-        .then(value =>
-          console.log('User clicked confirm:', value)
-        )
-        .catch(value => 
-        console.log('User clicked cancel:', value)
-        );
+    console.log("Currency Validation Error");
+    // open modal
+    confirmModal
+      .open()
+      .then((value) => console.log("User clicked confirm:", value))
+      .catch((value) => console.log("User clicked cancel:", value));
     // });
-    
   } else {
     displayConversionResult(currData.new_amount, currencyName, currencyCode);
   }
@@ -71,11 +73,14 @@ var budgetButton = document.getElementById("tip");
 // adding click listenter
 budgetButton.addEventListener("click", function (event) {
   event.preventDefault();
-  var countryName = document.getElementById("locationInput").value;
+var countryName = document.getElementById("locationInput").value;
   var amount = document.getElementById("budget").value;
   getCountryCurrency(countryName, amount);
   getCoordinates();
+
 });
+
+
 
 const displayConversionResult = (
   convertedAmount,
@@ -83,12 +88,12 @@ const displayConversionResult = (
   currencyCode
 ) => {
   const resultElement = document.getElementById("conversionResult");
-  formatedAmount = convertedAmount.toLocaleString("en-Us", {
+  const formattedAmount = convertedAmount.toLocaleString("en-Us", {
     style: "currency",
     currency: currencyCode,
-  });
-  console.log(formatedAmount);
-  resultElement.textContent = `Converted amount: ${currencyName} ${formatedAmount}`;
+});
+  console.log(formattedAmount);
+  resultElement.textContent = `Converted amount: ${currencyName} ${formattedAmount}`;
 };
 
 var budgetButton = document.getElementById("tip");
@@ -98,8 +103,6 @@ budgetButton.addEventListener("click", function (event) {
   var amount = document.getElementById("budget").value;
   getCountryCurrency(countryName, amount);
 });
-
-
 
 //1 BUTTON ONLY
 //GET MAP TO DISPLAY ON THIS PAGE
